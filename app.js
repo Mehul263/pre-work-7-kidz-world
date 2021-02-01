@@ -210,3 +210,117 @@ crafts4Add.onclick = (e) => {
     crafts4.quantity++;
     updateCart();
 };
+
+var finalDollars = 0;
+var finalCents = 0;
+
+function updatePrice() {
+    var books1CostinCents =
+        books1.quantity * books1.dollars * 100 + books1.quantity * books1.cents;
+        var books2CostinCents =
+        books2.quantity * books2.dollars * 100 + books2.quantity * books2.cents;
+        var books3CostinCents =
+        books3.quantity * books3.dollars * 100 + books3.quantity * books3.cents;
+        var books4CostinCents =
+        books4.quantity * books4.dollars * 100 + books4.quantity * books4.cents;
+        var books5CostinCents =
+        books5.quantity * books5.dollars * 100 + books5.quantity * books5.cents;
+        var books6CostinCents =
+        books6.quantity * books6.dollars * 100 + books6.quantity * books6.cents;
+
+        var games1CostinCents =
+        games1.quantity * games1.dollars * 100 + games1.quantity * games1.cents;
+        var games2CostinCents =
+        games2.quantity * games2.dollars * 100 + games2.quantity * games2.cents;
+        var games3CostinCents =
+        games3.quantity * games3.dollars * 100 + games3.quantity * games3.cents;
+        var games4CostinCents =
+        games4.quantity * games4.dollars * 100 + games4.quantity * games4.cents;
+
+        var crafts1CostinCents =
+        crafts1.quantity * crafts1.dollars * 100 + crafts1.quantity * crafts1.cents;
+        var crafts2CostinCents =
+        crafts2.quantity * crafts2.dollars * 100 + crafts2.quantity * crafts2.cents;
+        var crafts3CostinCents =
+        crafts3.quantity * crafts3.dollars * 100 + crafts3.quantity * crafts3.cents;
+        var crafts4CostinCents =
+        crafts4.quantity * crafts4.dollars * 100 + crafts4.quantity * crafts4.cents;
+
+        totalPriceInCents =
+        books1CostinCents +
+        books2CostinCents +
+        books3CostinCents +
+        books4CostinCents +
+        books5CostinCents +
+        books6CostinCents +
+        games1CostinCents +
+        games2CostinCents +
+        games3CostinCents +
+        games4CostinCents +
+        crafts1CostinCents +
+        crafts2CostinCents +
+        crafts3CostinCents +
+        crafts4CostinCents;
+
+        finalDollars = Math.floor(totalPriceInCents / 100);
+        finalCents = totalPriceInCents % 100;
+}
+
+var whatsappLink = 
+"https://api.whatsapp.com/send?phone=919000000000&text=Order%20details";
+
+function updateWhatsappLink() {
+    if (books1.quantity != 0) {
+        whatsappLink += "%0A" + books1.name + "%20" + books1.quantity;
+    }
+    if (books2.quantity != 0) {
+        whatsappLink += "%0A" + books2.name + "%20" + books2.quantity;
+    }
+    if (books3.quantity != 0) {
+        whatsappLink += "%0A" + books3.name + "%20" + books3.quantity;
+    }
+    if (books4.quantity != 0) {
+        whatsappLink += "%0A" + books4.name + "%20" + books4.quantity;
+    }
+    if (books5.quantity != 0) {
+        whatsappLink += "%0A" + books5.name + "%20" + books5.quantity;
+    }
+    if (books6.quantity != 0) {
+        whatsappLink += "%0A" + books6.name + "%20" + books6.quantity;
+    }
+
+
+    if (games1.quantity != 0) {
+        whatsappLink += "%0A" + games1.name + "%20" + games1.quantity;
+    }
+    if (games2.quantity != 0) {
+        whatsappLink += "%0A" + games2.name + "%20" + games2.quantity;
+    }
+    if (games3.quantity != 0) {
+        whatsappLink += "%0A" + games3.name + "%20" + games3.quantity;
+    }
+    if (games4.quantity != 0) {
+        whatsappLink += "%0A" + games4.name + "%20" + games4.quantity;
+    }
+
+
+    if (crafts1.quantity != 0) {
+        whatsappLink += "%0A" + crafts1.name + "%20" + crafts1.quantity;
+    }
+    if (crafts2.quantity != 0) {
+        whatsappLink += "%0A" + crafts2.name + "%20" + crafts2.quantity;
+    }
+    if (crafts3.quantity != 0) {
+        whatsappLink += "%0A" + crafts3.name + "%20" + crafts3.quantity;
+    }
+    if (crafts4.quantity != 0) {
+        whatsappLink += "%0A" + crafts4.name + "%20" + crafts4.quantity;
+    }
+    whatsappLink += "%0A" + "Total%20Price:%20$" + finalDollars + "%20" + finalCents + "c";
+}
+
+cartButton.onclick = () => {
+    updatePrice();
+    updateWhatsappLink();
+    window.open(whatsappLink, "_blank");
+};
